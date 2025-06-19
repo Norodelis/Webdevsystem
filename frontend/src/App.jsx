@@ -10,13 +10,7 @@ import Students from './Students.jsx';
 import { AuthContext } from './AuthContext.jsx';
 import StudentDashboard from './StudentDashboard.jsx';
 import Footer from './Footer.jsx';
-
-const ProfessorDashboard = () => (
-  <div>
-    <h2>Professor Dashboard</h2>
-    <p>Welcome, Professor!</p>
-  </div>
-);
+import ProfessorDashboard from './ProfessorDashboard.jsx';
 
 const ProtectedRoute = ({ children, role }) => {
   const { user } = React.useContext(AuthContext);
