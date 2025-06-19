@@ -7,7 +7,7 @@ const Students = () => {
   const [students, setStudents] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/teacher/students', {
+    axios.get('http://localhost:5000/api/teacher/students/grouped', {
       headers: { Authorization: `Bearer ${user.token}` }
     }).then(res => setStudents(res.data));
   }, [user]);
@@ -20,16 +20,16 @@ const Students = () => {
           <tr>
             <th>Name</th>
             <th>Section</th>
-            <th>Subject</th>
+            <th>Subjects</th>
             <th>Grade Level</th>
           </tr>
         </thead>
         <tbody>
           {students.map(s => (
-            <tr key={s.student_id + '-' + s.subject_name}>
+            <tr key={s.student_id + '-' + s.section}>
               <td>{s.full_name}</td>
               <td>{s.section}</td>
-              <td>{s.subject_name}</td>
+              <td>{s.subjects}</td>
               <td>{s.grade_level}</td>
             </tr>
           ))}

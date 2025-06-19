@@ -170,7 +170,7 @@ app.get('/api/student/subjects', authenticateJWT, async (req, res) => {
 
 // --- TEACHER ENDPOINTS ---
 
-// Get students in teacher's classes
+// Get students in teacher's classes (detailed, for grades page)
 app.get('/api/teacher/students', authenticateJWT, async (req, res) => {
   const { userId } = req.user;
   const [rows] = await db.query(`
@@ -186,6 +186,27 @@ app.get('/api/teacher/students', authenticateJWT, async (req, res) => {
   res.json(rows);
 });
 
+// Get grouped students (one row per student, all subjects merged, for student list)
+app.get('/api/teacher/students/grouped', authenticateJWT, async (req, res) => {
+  const { userId } = req.user;
+  const [rows] = await db.query(`
+    SELECT 
+      sp.student_id, 
+      sp.full_name, 
+      sp.grade_level, 
+      c.section, 
+      GROUP_CONCAT(DISTINCT sub.subject_name ORDER BY sub.subject_name SEPARATOR ', ') AS subjects
+    FROM student_profiles sp
+    JOIN enrollments e ON sp.student_id = e.student_id
+    JOIN classes c ON e.class_id = c.class_id
+    JOIN subjects sub ON c.subject_id = sub.subject_id
+    WHERE c.teacher_id = ?
+    GROUP BY sp.student_id, sp.full_name, sp.grade_level, c.section
+    ORDER BY sp.full_name
+  `, [userId]);
+  res.json(rows);
+});
+
 // Update student grade
 app.put('/api/teacher/grades/:gradeId', authenticateJWT, async (req, res) => {
   const { gradeId } = req.params;
@@ -196,6 +217,20 @@ app.put('/api/teacher/grades/:gradeId', authenticateJWT, async (req, res) => {
   `, [perf_task_score, perf_task_max, written_score, written_max, exam_score, exam_max, final_grade, gradeId]);
   io.emit('gradeUpdate', { gradeId }); // Real-time update
   res.json({ success: true });
+});
+
+// Get schedules for teacher's classes
+app.get('/api/teacher/schedules', authenticateJWT, async (req, res) => {
+  const { userId } = req.user;
+  const [rows] = await db.query(`
+    SELECT s.day, s.start_time, s.end_time, s.room, sub.subject_name, c.section
+    FROM schedules s
+    JOIN classes c ON s.class_id = c.class_id
+    JOIN subjects sub ON c.subject_id = sub.subject_id
+    WHERE c.teacher_id = ?
+    ORDER BY FIELD(s.day, 'Monday','Tuesday','Wednesday','Thursday','Friday'), s.start_time, sub.subject_name
+  `, [userId]);
+  res.json(rows);
 });
 
 // --- REAL-TIME SOCKET.IO ---

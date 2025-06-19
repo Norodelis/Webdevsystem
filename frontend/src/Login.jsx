@@ -25,7 +25,12 @@ const Login = () => {
       });
       const data = await res.json();
       if (data.token) {
-        setUser({ token: data.token, role: data.role, userId: data.userId });
+        // Fetch profile to get full_name
+        const profileRes = await fetch('http://localhost:5000/api/profile', {
+          headers: { Authorization: `Bearer ${data.token}` }
+        });
+        const profile = await profileRes.json();
+        setUser({ token: data.token, role: data.role, userId: data.userId, full_name: profile.full_name });
         if (data.role === 'Teacher') {
           navigate('/professor-dashboard');
         } else if (data.role === 'Student') {
