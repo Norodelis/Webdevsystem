@@ -12,7 +12,16 @@ const Navbar = () => {
   };
 
   return (
-    <nav style={{ background: '#6366f1', padding: '1rem', marginBottom: '2rem', color: '#fff', display: 'flex', gap: '1.5rem' }}>
+    <nav style={{
+      background: '#6366f1',
+      padding: '1rem',
+      marginBottom: '2rem',
+      color: '#fff',
+      display: 'flex',
+      gap: '1.5rem',
+      alignItems: 'center'
+    }}>
+      <img src="/logo.png" alt="Logo" style={{ height: 40, marginRight: 16, borderRadius: 8 }} />
       <Link to={user.role === 'Student' ? "/student-dashboard" : "/professor-dashboard"} style={{ color: '#fff', fontWeight: 'bold' }}>Dashboard</Link>
       <Link to="/profile" style={{ color: '#fff' }}>Profile</Link>
       {user.role === 'Student' && (

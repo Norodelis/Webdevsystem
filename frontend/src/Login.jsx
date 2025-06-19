@@ -40,9 +40,12 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
+    <div className="login-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh' }}>
       <form className="login-form" onSubmit={handleSubmit}>
-        <h2>Welcome to OGS</h2>
+        <div className="logohead" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16 }}>
+          <h2 style={{ margin: 0, marginRight: 16 }}>Welcome to OGS</h2>
+          <img src="/logo.png" alt="Logo" style={{ height: 60, borderRadius: 12, boxShadow: '0 2px 12px rgba(99,102,241,0.08)' }} />
+        </div>
         <div className="role-select">
           <label>
             <input

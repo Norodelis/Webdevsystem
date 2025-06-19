@@ -1,4 +1,24 @@
 /* Reset and base styles */
+html, body, #root {
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body, #root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: 100%;
+}
+
+#root {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
   background: linear-gradient(135deg, #e0e7ff 0%, #f0fdfa 100%);
@@ -115,6 +135,10 @@ nav button {
   border-radius: 1rem;
   box-shadow: 0 4px 24px rgba(0,0,0,0.08);
   padding: 2rem;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* Tables */
@@ -231,6 +255,28 @@ input[type="radio"] {
   display: flex;
   gap: 1rem;
   justify-content: center;
+}
+
+/* Footer styles (optional, for full width and no border radius) */
+footer {
+  width: 100%;
+  border-radius: 0;
+}
+
+/* Logo Header */
+.logohead {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.logohead h2 {
+  margin: 0 16px 0 0;
+}
+.logohead img {
+  height: 60px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(99,102,241,0.08);
 }
 
 /* Responsive */
