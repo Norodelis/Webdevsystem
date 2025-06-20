@@ -45,7 +45,7 @@ const Grades = () => {
 
   return (
     <div style={{ maxWidth: 800, margin: '2rem auto' }}>
-      <h2>Grades</h2>
+      <h2 style={{ color: '#fff' }}>Grades</h2>
       <table>
         <thead>
           <tr>

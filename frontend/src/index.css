@@ -1,7 +1,8 @@
 /* Reset and base styles */
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
-  background: linear-gradient(135deg, #e0e7ff 0%, #f0fdfa 100%);
+  /* More blue, less orange gradient */
+  background: linear-gradient(135deg, #f59e42 -25%, #053db5 50%, #f59e42 125%);
   margin: 0;
   min-height: 100vh;
   color: #1e293b;
@@ -161,10 +162,11 @@ input[type="radio"] {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: none;
 }
 
 .login-form {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.985);
   padding: 2.5rem 2rem;
   border-radius: 1rem;
   box-shadow: 0 4px 24px rgba(0,0,0,0.08);

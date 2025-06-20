@@ -47,6 +47,7 @@ const Login = () => {
   return (
     <div className="login-container">
       <form className="login-form" onSubmit={handleSubmit}>
+        <img src="/logo.png" alt="Logo" style={{ width: 120, height: 120, objectFit: 'cover', margin: '0 auto 1rem', display: 'block', background: 'none', boxShadow: 'none', borderRadius: '85%' }} />
         <h2>Welcome to OGS</h2>
         <div className="role-select">
           <label>

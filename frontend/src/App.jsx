@@ -10,6 +10,7 @@ import Students from './Students.jsx';
 import { AuthContext } from './AuthContext.jsx';
 import StudentDashboard from './StudentDashboard.jsx';
 import ProfessorDashboard from './ProfessorDashboard.jsx';
+import Footer from './Footer.jsx';
 
 const ProtectedRoute = ({ children, role }) => {
   const { user } = React.useContext(AuthContext);
@@ -62,6 +63,7 @@ const App = () => {
           } />
         </Routes>
       </Router>
+      <Footer />
     </AuthContext.Provider>
   );
 };

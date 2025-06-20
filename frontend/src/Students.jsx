@@ -14,7 +14,7 @@ const Students = () => {
 
   return (
     <div style={{ maxWidth: 800, margin: '2rem auto' }}>
-      <h2>My Students</h2>
+      <h2 style={{ color: '#fff' }}>My Students</h2>
       <table border="1" cellPadding="8" style={{ width: '100%' }}>
         <thead>
           <tr>

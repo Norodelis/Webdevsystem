@@ -28,7 +28,7 @@ const Navbar = () => {
           <Link to="/grades" style={{ color: '#fff' }}>Grades</Link>
         </>
       )}
-      <button onClick={handleLogout} style={{ marginLeft: 'auto', background: '#ef4444', color: '#fff', border: 'none', borderRadius: '5px', padding: '0.5rem 1rem' }}>Logout</button>
+      <button onClick={handleLogout} style={{ marginLeft: 'auto', background: '#fff', color: 'black', border: 'none', borderRadius: '5px', padding: '0.5rem 1rem' }}>Logout</button>
     </nav>
   );
 };
