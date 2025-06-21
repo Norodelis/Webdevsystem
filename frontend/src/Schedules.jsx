@@ -13,7 +13,7 @@ const Schedules = () => {
   }, [user]);
 
   return (
-    <div style={{ maxWidth: 600, margin: '2rem auto' }}>
+    <div style={{ maxWidth: 600, margin: '2rem auto', minHeight: '80vh' }}>
       <h2 style={{ color: '#fff' }}>My Schedules</h2>
       <table border="1" cellPadding="8" style={{ width: '100%' }}>
         <thead>

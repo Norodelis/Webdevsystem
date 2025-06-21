@@ -11,7 +11,7 @@ import { AuthContext } from './AuthContext.jsx';
 import StudentDashboard from './StudentDashboard.jsx';
 import Footer from './Footer.jsx';
 import ProfessorDashboard from './ProfessorDashboard.jsx';
-import Footer from './Footer.jsx';
+
 
 const ProtectedRoute = ({ children, role }) => {
   const { user } = React.useContext(AuthContext);
@@ -39,39 +39,41 @@ const App = () => {
   return (
     <AuthContext.Provider value={{ user, setUser }}>
       <Router>
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="*" element={
-            <>
-              <Routes>
-                <Route path="/student-dashboard" element={
-                  <ProtectedRoute role="Student"><StudentDashboard /></ProtectedRoute>
-                } />
-                <Route path="/professor-dashboard" element={
-                  <ProtectedRoute role="Teacher"><ProfessorDashboard /></ProtectedRoute>
-                } />
-                <Route path="/profile" element={
-                  <ProtectedRoute><Profile /></ProtectedRoute>
-                } />
-                <Route path="/schedules" element={
-                  <ProtectedRoute role="Student"><Schedules /></ProtectedRoute>
-                } />
-                <Route path="/grades" element={
-                  <ProtectedRoute><Grades /></ProtectedRoute>
-                } />
-                <Route path="/subjects" element={
-                  <ProtectedRoute role="Student"><Subjects /></ProtectedRoute>
-                } />
-                <Route path="/students" element={
-                  <ProtectedRoute role="Teacher"><Students /></ProtectedRoute>
-                } />
-              </Routes>
-              <Footer />
-            </>
-          } />
-        </Routes>
+        <div className="main-content">
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="*" element={
+              <>
+                <Routes>
+                  <Route path="/student-dashboard" element={
+                    <ProtectedRoute role="Student"><StudentDashboard /></ProtectedRoute>
+                  } />
+                  <Route path="/professor-dashboard" element={
+                    <ProtectedRoute role="Teacher"><ProfessorDashboard /></ProtectedRoute>
+                  } />
+                  <Route path="/profile" element={
+                    <ProtectedRoute><Profile /></ProtectedRoute>
+                  } />
+                  <Route path="/schedules" element={
+                    <ProtectedRoute role="Student"><Schedules /></ProtectedRoute>
+                  } />
+                  <Route path="/grades" element={
+                    <ProtectedRoute><Grades /></ProtectedRoute>
+                  } />
+                  <Route path="/subjects" element={
+                    <ProtectedRoute role="Student"><Subjects /></ProtectedRoute>
+                  } />
+                  <Route path="/students" element={
+                    <ProtectedRoute role="Teacher"><Students /></ProtectedRoute>
+                  } />
+                </Routes>
+                <Footer />
+              </>
+            } />
+          </Routes>
+        </div>
       </Router>
-      <Footer />
+    
     </AuthContext.Provider>
   );
 };

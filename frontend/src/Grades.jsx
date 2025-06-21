@@ -44,7 +44,7 @@ const Grades = () => {
   };
 
   return (
-    <div style={{ maxWidth: 800, margin: '2rem auto' }}>
+    <div style={{ maxWidth: 800, margin: '2rem auto', minHeight: '75vh' }}>
       <h2 style={{ color: '#fff' }}>Grades</h2>
       <table>
         <thead>

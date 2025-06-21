@@ -41,7 +41,7 @@ const Profile = () => {
   if (!profile) return <div>Loading...</div>;
 
   return (
-    <div className="profile-card">
+    <div className="profile-card page-container" style={{ minHeight: '60vh' }}>
       <div className="profile-title">Profile</div>
       <div className="profile-detail">
         <span className="profile-label">Full Name:</span>

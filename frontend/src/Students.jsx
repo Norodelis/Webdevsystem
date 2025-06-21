@@ -13,9 +13,9 @@ const Students = () => {
   }, [user]);
 
   return (
-    <div style={{ maxWidth: 800, margin: '2rem auto' }}>
-      <h2 style={{ color: '#fff' }}>My Students</h2>
-      <table border="1" cellPadding="8" style={{ width: '100%' }}>
+    <div className="page-container" style={{ minHeight: '60vh' }}>
+      <h2 style={{ color: '#1e293b' }}>My Students</h2>
+      <table border="1" cellPadding="6" style={{ width: '100%' }}>
         <thead>
           <tr>
             <th>Name</th>

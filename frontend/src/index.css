@@ -1,9 +1,7 @@
 /* Reset and base styles */
 html, body, #root {
   height: 100%;
-  min-height: 100%;
-  margin: 0;
-  padding: 0;
+  min-height: 100vh;
 }
 
 body, #root {
@@ -14,6 +12,12 @@ body, #root {
 }
 
 #root {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
   flex: 1 0 auto;
   display: flex;
   flex-direction: column;
@@ -263,6 +267,8 @@ input[type="radio"] {
 footer {
   width: 100%;
   border-radius: 0;
+  flex-shrink: 0;
+  margin-top: auto;
 }
 
 /* Logo Header */
